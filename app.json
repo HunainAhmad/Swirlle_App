@@ -12,6 +12,9 @@
       "bundleIdentifier": "com.swirlle.rideapp",
       "config": {
         "googleMapsApiKey": "YOUR_GOOGLE_MAP_API_KEY"
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -24,7 +27,11 @@
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.swirlle.rideapp"
+      "package": "com.swirlle.rideapp",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -32,6 +39,7 @@
     },
     "plugins": [
       "expo-router",
+      "react-native-maps",
       [
         "expo-location",
         {
@@ -50,6 +58,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "bcdd75a3-922f-4f12-ac3b-dc1037d2fde7"
+      }
     }
   }
 }

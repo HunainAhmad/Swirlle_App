@@ -1,0 +1,58 @@
+import { useRouter } from 'expo-router';
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { roleStyles } from '@/styles/roleStyles';
+
+const roleOptions = [
+  {
+    id: 'rider',
+    title: 'Ride as a passenger',
+    description: 'Book a trip instantly and travel with comfort and safety.',
+    image: require('../assets/images/customer.jpg'),
+  },
+  {
+    id: 'driver',
+    title: 'Drive and earn',
+    description: 'Accept nearby customer requests and grow your earnings.',
+    image: require('../assets/images/rider.jpg'),
+  },
+];
+
+export default function RoleSelectionScreen() {
+  const router = useRouter();
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image source={require('../assets/images/logo_t.png')} style={roleStyles.logo} />
+      <Text style={styles.title}>Choose your role</Text>
+
+      {roleOptions.map((role) => (
+        <Pressable
+          key={role.id}
+          style={roleStyles.card}
+          onPress={() => router.push('/auth' as any)}
+        >
+          <Image source={role.image} style={roleStyles.image} />
+          <View style={roleStyles.cardContent}>
+            <Text style={roleStyles.title}>{role.title}</Text>
+            <Text style={roleStyles.description}>{role.description}</Text>
+          </View>
+        </Pressable>
+      ))}
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingBottom: 24,
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#111827',
+    marginBottom: 8,
+  },
+});

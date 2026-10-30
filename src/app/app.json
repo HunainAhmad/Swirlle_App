@@ -39,8 +39,10 @@
     },
     "plugins": [
       "expo-router",
+      "react-native-maps",
       [
         "expo-location",
+        
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
